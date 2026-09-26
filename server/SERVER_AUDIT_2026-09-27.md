@@ -1,17 +1,29 @@
 # Ozon MCP — аудит production VPS
 
-Дата документа: 2026-09-27.
+Дата актуализации: 2026-09-27.
 
-Важно: это фиксация последнего доказанного состояния. В этом сообщении VPS не опрашивался напрямую заново. Последний документированный live-аудит Performance выполнен 26.09.2026; Seller/293 checks — 24.09.2026.
+Важно: этот документ описывает безопасную процедуру аудита. В текущем сообщении VPS напрямую не опрашивался.
 
-## Safe audit
+## 1. Host/runtime
+
+Ожидаемая среда:
+- host cv7976275
+- Ubuntu 22.04.4 LTS
+- Seller :8000
+- Performance :8001
+- nginx :80/:443
+
+## 2. Safe audit
 
 ```bash
 set -e
+
+echo '=== HOST ==='
 hostname
 hostname -I
 lsb_release -ds 2>/dev/null || true
 
+echo '=== SERVICES ==='
 systemctl is-enabled ozon-mcp.service
 systemctl is-active ozon-mcp.service
 systemctl show ozon-mcp.service -p ActiveState -p SubState -p MainPID -p ExecMainStartTimestamp
@@ -20,24 +32,19 @@ systemctl is-enabled ozon-performance.service
 systemctl is-active ozon-performance.service
 systemctl show ozon-performance.service -p ActiveState -p SubState -p MainPID -p ExecMainStartTimestamp
 
+echo '=== PORTS ==='
 ss -lntp | grep -E ':8000|:8001' || true
+
+echo '=== NGINX ==='
 nginx -t
 
-stat -c '%a %U:%G %n' /root/.config/ozon-mcp/env /root/.config/ozon-mcp/perf.env
+echo '=== SECRET PERMISSIONS ==='
+stat -c '%a %U:%G %n'   /root/.config/ozon-mcp/env   /root/.config/ozon-mcp/perf.env
 ```
 
-Не печатать содержимое env-файлов.
+Не выводить env contents.
 
-## Expected
-
-- Seller :8000 = loopback;
-- Performance :8001 = loopback;
-- nginx :80/:443 = public entry;
-- env files = 600 root:root;
-- оба systemd service = active;
-- nginx -t = successful.
-
-## Seller audit
+## 3. Seller audit
 
 ```bash
 systemctl status ozon-mcp.service --no-pager
@@ -45,60 +52,84 @@ journalctl -u ozon-mcp.service -n 100 --no-pager
 systemctl cat ozon-mcp.service
 ```
 
-Ожидаемый запуск:
+Expected launch:
 `/root/.local/bin/uvx --from 'ozon-mcp-ru==0.6.0' ozon-mcp-ru`
 
-## Performance audit
+## 4. Performance audit
 
 ```bash
 systemctl status ozon-performance.service --no-pager
 journalctl -u ozon-performance.service -n 100 --no-pager
 systemctl cat ozon-performance.service
 git -C /opt/kvantexpert/marketplaces-mcp-ru rev-parse HEAD || true
+ss -lntp | grep ':8001' || true
 ```
 
-Ожидаемый runtime:
-`/opt/kvantexpert/marketplaces-mcp-ru/.venv/bin/ozon-perf-mcp`
-Ожидаемый pinned commit: `ec2114595695536e001e09e1144a357118852db1`.
+Expected upstream:
+`ec2114595695536e001e09e1144a357118852db1`
 
-## Performance smoke
+## 5. MCP smoke
 
-После проверки loopback:
-1. local MCP initialize;
-2. tools/list;
-3. ozon_perf_describe_method;
-4. harmless READ `ozonperf_get_api_client_campaign`.
+Seller:
+- local initialize;
+- tools/list;
+- harmless READ.
 
-Для первичного аудита не выполнять write/delete.
+Performance:
+- local initialize;
+- tools/list;
+- `ozon_perf_call_method(operation_id=ozonperf_get_api_client_campaign)`.
 
-## 48-operation audit
+Do not execute write/delete during baseline audit.
 
-Источник operation_id: `patches/marketplaces-mcp-ru/perf_endpoints.yaml`.
-Для каждого operation_id вызвать `ozon_perf_describe_method`.
-Ожидание: 48/48, 0 FAIL.
+## 6. 48-operation audit
 
-## 293 audit
+Source:
+`patches/marketplaces-mcp-ru/perf_endpoints.yaml`
 
-Первым делом сделать свежий READ:
+Run `ozon_perf_describe_method` for all operation_id.
+
+Expected:
+- 48/48;
+- 0 FAIL.
+
+This is catalog audit, not business success audit.
+
+## 7. 293 audit
+
+Always start with fresh READ:
 - product list;
 - product limits;
 - category tree.
 
-Проверить `disabled` у category 200001489 и type 971075562.
+For target category/type:
+- 200001489;
+- 971075562.
 
-Если disabled=true или import снова даёт used_forbidden_category: остановить импорт.
+If `disabled=true`:
+**stop import**.
 
-Если категория разрешена: только тогда готовить первую партию <=100 и проверять task/status.
+If import returns:
+- `description_category_is_empty` -> payload category missing;
+- `used_forbidden_category` -> category unavailable.
 
-## Security / stop conditions
+## 8. Security stop conditions
 
-Остановиться, если:
-- :8001 опубликован наружу;
-- service не active;
+Stop and fix infrastructure before functional work if:
+- 8001 is externally bound;
+- either service inactive;
 - nginx -t fails;
-- env permissions != 600;
-- catalog != 48;
-- category remains disabled;
-- появляются неожиданные изменения в runtime.
+- env permissions not 600;
+- unexpected runtime catalog;
+- unexpected uncommitted changes;
+- credentials appear in logs/output.
 
-Не записывать в документацию Client-Id, API-Key, Performance secret, TLS private key или digital codes.
+## 9. Current documentation status
+
+Last documented Performance live catalog audit:
+26.09.2026 -> 48/48, 0 FAIL.
+
+Last documented 293 negative tests:
+24.09.2026 -> category disabled/forbidden, import not started.
+
+A fresh server audit is the first step before the next functional deployment.

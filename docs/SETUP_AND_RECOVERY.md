@@ -1,0 +1,221 @@
+# Ozon MCP — настройка, deployment и recovery
+
+Дата: 2026-09-27
+
+## 1. Что развернуто
+
+Один VPS:
+- Seller MCP :8000 loopback
+- Performance MCP :8001 loopback
+- nginx :80/:443
+- Seller public endpoint: https://ozon-mcp.kvantexpert.ru/mcp
+- Performance public endpoint отсутствует.
+
+Seller:
+- ozon-mcp-ru 0.6.0
+- uvx runtime
+- env /root/.config/ozon-mcp/env
+
+Performance:
+- marketplaces-mcp-ru 0.6.1
+- pinned commit ec2114595695536e001e09e1144a357118852db1
+- venv /opt/kvantexpert/marketplaces-mcp-ru/.venv
+- env /root/.config/ozon-mcp/perf.env
+
+## 2. Проверка текущего сервера
+
+```bash
+hostname
+hostname -I
+lsb_release -ds 2>/dev/null || true
+
+systemctl is-enabled ozon-mcp.service
+systemctl is-active ozon-mcp.service
+systemctl show ozon-mcp.service -p ActiveState -p SubState -p MainPID -p ExecMainStartTimestamp
+
+systemctl is-enabled ozon-performance.service
+systemctl is-active ozon-performance.service
+systemctl show ozon-performance.service -p ActiveState -p SubState -p MainPID -p ExecMainStartTimestamp
+
+ss -lntp | grep -E ':8000|:8001' || true
+nginx -t
+
+stat -c '%a %U:%G %n' /root/.config/ozon-mcp/env /root/.config/ozon-mcp/perf.env
+```
+
+Не выводить env contents.
+
+Ожидается:
+- services active/enabled;
+- 8000/8001 loopback;
+- nginx -t successful;
+- env mode 600.
+
+## 3. Seller deployment
+
+Фактический production unit использует:
+
+```text
+/root/.local/bin/uvx --from 'ozon-mcp-ru==0.6.0' ozon-mcp-ru
+```
+
+Для диагностики:
+```bash
+systemctl cat ozon-mcp.service
+systemctl restart ozon-mcp.service
+systemctl is-active ozon-mcp.service
+journalctl -u ozon-mcp.service -n 100 --no-pager
+```
+
+После restart:
+1. local MCP initialize;
+2. tools/list;
+3. harmless READ;
+4. public endpoint smoke.
+
+## 4. Performance deployment
+
+Runtime source-of-truth:
+- upstream commit ec2114595695536e001e09e1144a357118852db1;
+- tracked patched catalog patches/marketplaces-mcp-ru/perf_endpoints.yaml;
+- installer deploy/scripts/install-performance-mcp.sh;
+- unit deploy/systemd/ozon-performance.service.
+
+Повторный deployment:
+1. checkout repo;
+2. run installer;
+3. create perf.env on server;
+4. daemon-reload;
+5. enable/start service;
+6. check 127.0.0.1:8001;
+7. initialize/tools/list;
+8. 48/48 describe;
+9. harmless READ.
+
+Seller :8000 не менять.
+
+## 5. Nginx
+
+Public only Seller.
+
+Не добавлять Performance route.
+
+Проверка:
+```bash
+nginx -t
+systemctl reload nginx
+```
+
+Если public Seller не отвечает:
+1. nginx status;
+2. nginx logs;
+3. Seller status;
+4. Seller local endpoint;
+5. only then inspect Ozon API.
+
+## 6. Credentials
+
+Seller:
+`/root/.config/ozon-mcp/env`
+
+Performance:
+`/root/.config/ozon-mcp/perf.env`
+
+Mode:
+`600 root:root`
+
+Никогда не коммитить:
+- Client-Id;
+- Api-Key;
+- Performance client secret;
+- Bearer token;
+- TLS private key;
+- cookies;
+- digital codes.
+
+## 7. Seller MCP smoke
+
+Local initialize:
+```bash
+curl -sS -D /tmp/ozon-mcp-headers.txt -o /tmp/ozon-mcp-init.json   -X POST 'http://127.0.0.1:8000/mcp'   -H 'Content-Type: application/json'   -H 'Accept: application/json, text/event-stream'   --data-binary '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ozon-audit","version":"1.0"}}}'
+grep -i '^mcp-session-id:' /tmp/ozon-mcp-headers.txt
+cat /tmp/ozon-mcp-init.json
+```
+
+После restart session ID нужно получать заново.
+
+## 8. Performance smoke
+
+Порядок:
+1. initialize;
+2. tools/list;
+3. harmless read:
+`ozon_perf_call_method(operation_id=ozonperf_get_api_client_campaign)`;
+4. затем при необходимости key READ operations.
+
+Не выполнять write/delete в базовом audit.
+
+## 9. 48 operation audit
+
+Взять operation_id из:
+`patches/marketplaces-mcp-ru/perf_endpoints.yaml`
+
+Для каждого:
+`ozon_perf_describe_method`
+
+Ожидание:
+48/48, 0 FAIL.
+
+Это catalog audit, а не business success audit.
+
+## 10. 293 import recovery
+
+Каждый раз перед batch:
+
+1. fresh product list;
+2. limits;
+3. category tree;
+4. check disabled;
+5. only then prepare <=100 items.
+
+Если:
+- `description_category_is_empty` -> category missing in payload;
+- `used_forbidden_category` -> category unavailable, stop import.
+
+После разрешённой category:
+1. batch 100;
+2. task_id;
+3. import/info;
+4. log exact errors;
+5. batch 100;
+6. batch 93.
+
+## 11. Ozon API changes
+
+Если endpoint returns 404/410 или wrapper кажется устаревшим:
+
+search_methods
+-> describe_method
+-> inspect path/schema
+-> READ test
+-> update docs/code.
+
+Не возвращаться автоматически к старому endpoint.
+
+## 12. Full recovery checklist
+
+```text
+[ ] Git HEAD known
+[ ] services active
+[ ] 8000 loopback
+[ ] 8001 loopback
+[ ] nginx valid
+[ ] env permissions 600
+[ ] Seller MCP initialize
+[ ] Performance MCP initialize
+[ ] Performance 48/48 describe
+[ ] harmless Performance READ
+[ ] current category tree
+[ ] 293 blocker status known
+[ ] no secrets exposed
+```

@@ -22,6 +22,7 @@ MCP-сервер, конфигурация развертывания и дол�
 - [Точка продолжения 2026-09-27](docs/PROJECT_STATE_2026-09-27.md)
 - [Аудит production VPS](server/SERVER_AUDIT_2026-09-27.md)
 - [База знаний](docs/KNOWLEDGE_BASE.md)
+- [Настройка и recovery](docs/SETUP_AND_RECOVERY.md)
 
 ## Документация проекта
 
