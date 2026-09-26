@@ -1,5 +1,7 @@
 # Состояние сервера Ozon MCP
 
+> Каноническая точка продолжения: `docs/PROJECT_STATE_2026-09-27.md`. Аудит VPS: `server/SERVER_AUDIT_2026-09-27.md`.
+
 Фактическая фиксация текущего VPS: **26 сентября 2026**.
 
 ## Сервер
@@ -152,7 +154,7 @@ Delete операции остаются `destructive`.
 
 Ранее контрольный read `GET /api/client/campaign` возвращал HTTP 200 и пустой список кампаний.
 
-Отдельный post-migration read smoke-test остается следующим коротким шагом.
+Канонический следующий шаг Performance: post-migration harmless READ `ozon_perf_call_method(operation_id=ozonperf_get_api_client_campaign)`.
 
 ## Deployment structure
 

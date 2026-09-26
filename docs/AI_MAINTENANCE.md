@@ -4,9 +4,12 @@
 
 ## 1. Сначала прочитать
 
-Перед изменениями прочитать:
+Перед изменениями сначала прочитать:
 
-1. README.md
+1. `docs/PROJECT_STATE_2026-09-27.md`
+2. `server/SERVER_AUDIT_2026-09-27.md`
+3. `docs/KNOWLEDGE_BASE.md`
+4. README.md
 2. docs/PROJECT_MODEL.md
 3. docs/CARD_LIFECYCLE.md
 4. docs/ATTRIBUTES_AND_DICTIONARIES.md
