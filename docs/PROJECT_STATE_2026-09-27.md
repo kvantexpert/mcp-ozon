@@ -13,10 +13,10 @@ Branch:
 main
 
 Current HEAD:
-937b2cc6e7db5d11e7c703d6a308bd0b201cbe1f
+1ca9644e84b7fb992ebd072cebdc968c666e7ad2
 
 Current commit:
-docs: freeze 2026-09-27 Ozon server state and handoff
+docs: add AI agent context for seller and performance
 
 Commit statuses:
 statuses=[]; обязательного CI gate нет.
@@ -50,8 +50,9 @@ Do not merge these runtimes.
 - Performance env /root/.config/ozon-mcp/perf.env
 - expected credentials permissions 600 root:root
 
-Последняя документированная server check:
-2026-09-26.
+Последняя документированная server check: 2026-09-26.
+
+Важно: это не означает свежий live audit на текущую дату; перед изменением runtime выполнить server/SERVER_AUDIT_2026-09-27.md.
 
 Перед следующей функциональной работой выполнить свежий server audit.
 
