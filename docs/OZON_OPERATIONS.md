@@ -289,3 +289,28 @@ await session.call_tool(
 - `type_id = 392638731`.
 
 Не считать эти значения шаблоном нового товара. Они являются контрольным примером успешного запуска.
+
+
+## 12. Подтверждённый payload-контракт /v3/product/import для OZON-BY
+
+Для каждого элемента body.items[] поля размеров и веса передаются на верхнем уровне item:
+
+{
+  offer_id, name, description_category_id, type_id, price, vat, currency_code,
+  images, primary_image,
+  depth, width, height, dimension_unit, weight, weight_unit,
+  attributes
+}
+
+Нельзя использовать вложенный объект dimensions. Такая форма приводит к missing_dimension.
+
+Обязательный контроль перед массовым WRITE:
+
+1. offer_id и цена взяты из актуального BY-реестра.
+2. description_category_id/type_id соответствуют актуальной разрешённой категории.
+3. 8229 заполнен актуальным dictionary value.
+4. 22232 (ТН ВЭД) заполнен применимым dictionary value.
+5. depth/width/height/dimension_unit/weight/weight_unit находятся непосредственно в item.
+6. После WRITE: task_id → ozon_product_import_info → errors=[].
+
+Подтверждение 2026-10-08: массовая задача 5772274745 — 57 товаров, 57/57 imported, errors=[]. Вместе с контрольными товарами реестр PREVIEW_61 доведён до 61/61 imported, errors=[].
