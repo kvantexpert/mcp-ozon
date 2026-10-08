@@ -256,3 +256,33 @@ Endpoint: `POST /v3/product/import`.
 Актуальная схема `/v3/product/import` требует учитывать обязательные поля категории/type/offer/price и реальные ненулевые dimensions/weight. MCP `describe_method` показывает сокращённый wrapper contract, поэтому для payload нельзя ограничиваться только `{offer_id, attributes, images, dimensions, type_id}`.
 
 Также Ozon обновлял этот метод 10.07.2026: `offer_id` был отмечен обязательным, `images360` удалён из request.
+
+
+## 16. Канонический E2E создания карточки — контрольный запуск
+
+Подтверждённый шаблон MCP WRITE:
+
+```python
+await session.call_tool(
+    "ozon_write_method",
+    arguments={
+        "operation_id": "ozon_product_import",
+        "body": {
+            "items": [PRODUCT]
+        },
+        "confirm_write": True
+    }
+)
+```
+
+Контрольный результат:
+
+- `task_id = 5772118688`;
+- `offer_id = 2900002078329`;
+- цена = `195 BYN`;
+- `category_id = 46590429`;
+- `type_id = 392638731`.
+
+Назначение записи — сохранить воспроизводимый способ вызова, чтобы агент по команде «создай карточку» использовал готовый WRITE-шаблон вместо повторного исследования механизма.
+
+Эти идентификаторы относятся к контрольному запуску и не должны автоматически переноситься в новую карточку.
