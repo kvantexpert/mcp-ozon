@@ -246,3 +246,46 @@ WRITE не запускать через read-only tool.
 5. READ-теста, если возможно;
 6. WRITE-теста только с безопасными данными;
 7. фиксации результата в TEST_HISTORY.
+
+
+## 11. Канонический WRITE-шаблон создания карточки
+
+Для пользовательского триггера «создай карточку» использовать operation:
+
+`ozon_product_import`
+
+MCP-вызов:
+
+```python
+await session.call_tool(
+    "ozon_write_method",
+    arguments={
+        "operation_id": "ozon_product_import",
+        "body": {
+            "items": [PRODUCT]
+        },
+        "confirm_write": True
+    }
+)
+```
+
+Назначение:
+
+- `ozon_write_method` — WRITE-диспетчер;
+- `ozon_product_import` — операция создания/импорта карточки;
+- `body.items` — список товаров для импорта;
+- `confirm_write=True` — обязательное подтверждение WRITE.
+
+После вызова:
+
+`task_id → status/errors → READ карточки`
+
+Последний подтверждённый E2E:
+
+- `task_id = 5772118688`;
+- `offer_id = 2900002078329`;
+- `195 BYN`;
+- `category_id = 46590429`;
+- `type_id = 392638731`.
+
+Не считать эти значения шаблоном нового товара. Они являются контрольным примером успешного запуска.
