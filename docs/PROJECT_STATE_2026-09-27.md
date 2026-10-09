@@ -1,25 +1,20 @@
 # Ozon MCP — каноническое состояние проекта / точка продолжения
 
-Дата актуализации: 2026-09-27
+Дата актуализации: 2026-10-09
 
 Перед любой следующей работой сначала читать этот файл и docs/KNOWLEDGE_BASE.md.
 
 ## 1. Repository
 
 GitHub:
-https://github.com/kvantexpert/ozon-mcp
+https://github.com/kvantexpert/mcp-ozon
 
 Branch:
 main
 
-Current HEAD:
-1ca9644e84b7fb992ebd072cebdc968c666e7ad2
-
-Current commit:
-docs: add AI agent context for seller and performance
-
-Commit statuses:
-statuses=[]; обязательного CI gate нет.
+Примечание:
+- фактическое состояние runtime на VPS проверяется отдельно от состояния GitHub-репозитория;
+- текущий VPS runtime прошёл свежий read-only audit 2026-10-09.
 
 ## 2. Architecture
 
@@ -28,33 +23,47 @@ Seller and Performance are separate services on one VPS.
 Seller:
 - 127.0.0.1:8000
 - public https://ozon-mcp.kvantexpert.ru/mcp
-- ozon-mcp-ru 0.6.0
+- MCP server runtime reports version 1.30.0
 
 Performance:
 - 127.0.0.1:8001
 - no public route
-- marketplaces-mcp-ru 0.6.1
-- pinned upstream ec2114595695536e001e09e1144a357118852db1
-- patched 48-operation catalog
+- MCP server runtime reports version 1.30.0
 
 Do not merge these runtimes.
 
-## 3. Server
+## 3. Fresh VPS audit — 2026-10-09
 
-- host cv7976275
-- Ubuntu 22.04.4 LTS
-- nginx 80/443
-- Seller service ozon-mcp.service
-- Performance service ozon-performance.service
-- env /root/.config/ozon-mcp/env
-- Performance env /root/.config/ozon-mcp/perf.env
-- expected credentials permissions 600 root:root
+Проверено без изменения runtime:
 
-Последняя документированная server check: 2026-09-26.
+Services:
+- ozon-mcp.service = active
+- ozon-performance.service = active
 
-Важно: это не означает свежий live audit на текущую дату; перед изменением runtime выполнить server/SERVER_AUDIT_2026-09-27.md.
+Listeners:
+- 127.0.0.1:8000
+- 127.0.0.1:8001
 
-Перед следующей функциональной работой выполнить свежий server audit.
+Nginx:
+- master process runs as root;
+- worker process runs as www-data.
+- локальный запуск `nginx -t` от desktop-agent не является валидной проверкой конфигурации: процесс не имеет доступа к TLS-сертификату. Конфигурацию/сертификаты не изменяли.
+
+Public MCP:
+- GET https://ozon-mcp.kvantexpert.ru/mcp -> HTTP 406; это ожидаемый ответ для Streamable HTTP при обычном GET.
+- MCP initialize через public HTTPS -> HTTP 200;
+- protocolVersion = 2025-03-26;
+- serverInfo = ozon_mcp 1.30.0;
+- MCP session успешно создана.
+
+Ozon API READ:
+- ozon_check_auth -> ready=true, source=env, missing_fields=[];
+- ozon_get_products(visibility=ALL, limit=1) -> HTTP 200;
+- total=170;
+- получен product_id=6533359912, offer_id=4601546116680, sku=5964025559.
+
+Вывод:
+**Fresh VPS audit PASS. Public Seller MCP E2E READ PASS.**
 
 ## 4. Seller — доказано
 
@@ -84,38 +93,21 @@ Do not merge these runtimes.
 - digital code upload for real posting;
 - delivery.
 
-## 5. 293
+## 5. Catalog import — этап закрыт
 
-Точный набор:
-- 00000002 = 193
-- 00000003 = 100
-- total 293
+Историческая задача массового импорта 293 позиций **не является текущей задачей**.
 
-Batches:
-100 + 100 + 93
+Фактический текущий статус:
+- 169 позиций уже импортированы;
+- этап импорта 169 закрыт;
+- повторно импортировать их не требуется;
+- к задаче 293 не возвращаться без отдельного явного запроса.
 
-Price rule:
-00001 -> 00003 -> 00004
+Старые записи о статусе `BLOCKED` для 293 являются историческими и не должны использоваться как текущий план работ.
 
-Endpoint:
-POST /v3/product/import
+## 6. Performance — текущий статус
 
-Status:
-**BLOCKED**
-
-Last documented blocker:
-- category/type returned disabled=true;
-- import without category -> description_category_is_empty;
-- import with 200001489 -> used_forbidden_category.
-
-Do not retry mass import until fresh category tree shows a permitted category/type.
-
-Important:
-293 positions were NOT imported.
-
-## 6. Performance — completed migration
-
-Completed:
+Ранее выполнено:
 - pinned 0.6.1 runtime;
 - tracked 48-op catalog;
 - 3 additions;
@@ -124,22 +116,33 @@ Completed:
 - loopback :8001;
 - 48/48 live describe audit.
 
-48/48 only proves catalog loading and operation visibility.
+Свежая проверка 2026-10-09:
+- MCP initialize на 127.0.0.1:8001 прошёл;
+- HTTP 200;
+- protocolVersion = 2025-03-26;
+- serverInfo = ozon_perf_mcp 1.30.0.
 
-## 7. Immediate next steps
+48/48 only proves catalog loading and operation visibility; это не является доказательством бизнес-операций Performance.
 
-1. Fresh server audit.
-2. Post-migration harmless Performance READ:
-   `ozon_perf_call_method(operation_id=ozonperf_get_api_client_campaign)`.
-3. Key Performance READ coverage.
-4. Fresh category tree/limits/product list.
-5. If category is now allowed, prepare first 100 of 293; otherwise stop.
-6. After Performance READ coverage, design minimal AI-visible tool set.
-7. Only after explicit access-control design consider public Performance endpoint.
-8. Digital posting/code/delivery remains a separate later stage.
+## 7. Current next steps
+
+1. Fresh VPS audit — **DONE / PASS**.
+2. Public Seller MCP initialize — **DONE / PASS**.
+3. Public Seller Ozon READ `ozon_check_auth` — **DONE / PASS**.
+4. Public Seller Ozon READ `ozon_get_products(limit=1)` — **DONE / PASS**.
+5. Performance READ coverage — отдельный следующий этап.
+6. После Performance READ coverage — определить минимальный AI-visible tool set.
+7. Digital posting/code/delivery remains a separate later stage.
+
+Не делать:
+- не импортировать повторно 169 позиций;
+- не возвращаться к массовому импорту 293 без явного запроса;
+- не трогать `ozon-performance.service` при работах, не связанных с Performance;
+- не менять systemd/nginx/runtime без отдельного основания и проверки.
 
 ## 8. Canonical documents
 
+- docs/PROJECT_STATE_2026-09-27.md
 - docs/KNOWLEDGE_BASE.md
 - docs/SETUP_AND_RECOVERY.md
 - server/SERVER_AUDIT_2026-09-27.md
