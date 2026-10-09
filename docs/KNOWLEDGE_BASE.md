@@ -260,9 +260,9 @@ import с `description_category_id=200001489` завершился `used_forbidd
 3. найти разрешённую category/type;
 4. не повторять массовый import со старой категорией.
 
-Это был реальный blocker 293, а не лимит 500.
+Это был исторический blocker массового импорта 293 на предыдущем этапе. Сейчас этап импорта закрыт; повторно этот workflow не запускать без явного запроса.
 
-### 9.3 293 импорт «не идёт»
+### 9.3 Исторический статус 293
 
 Последний документированный новый аккаунт:
 - products: 0/500;
@@ -273,8 +273,10 @@ import с `description_category_id=200001489` завершился `used_forbidd
 Вывод:
 лимит ассортимента не был blocker.
 
-Правильная диагностика:
+Правильная историческая диагностика:
 category tree -> disabled -> import test -> task/status.
+
+**Текущий статус:** 169 позиций уже импортированы. Этап импорта закрыт. Старые лимиты и диагностика выше не являются текущим планом работ.
 
 ### 9.4 WRITE выполнен read-only MCP tool
 
@@ -335,7 +337,9 @@ optional поле оставлять пустым, пока источник н�
 Исправление:
 проверять posting_number, required quantity, code upload и delivery отдельно.
 
-## 10. 293 catalog
+## 10. Исторический 293 catalog
+
+Этот раздел описывает исходный набор 293, использованный на историческом этапе. Он не является текущей задачей и не должен запускать новый импорт.
 
 Источник:
 `GOODS.JSON`, не изменять.
@@ -367,7 +371,9 @@ optional поле оставлять пустым, пока источник н�
 Базовое правило:
 не смешивать Basic/PROF/CORP и другие предложения автоматически.
 
-## 11. Ошибки массового импорта и правильный алгоритм
+## 11. Исторический алгоритм массового импорта
+
+**Справочно. Этап закрыт: 169 позиций уже импортированы. Не выполнять эти действия автоматически и не возвращаться к ним без явного запроса.**
 
 До снятия category blocker:
 - не отправлять 293;
@@ -563,8 +569,8 @@ stat -c '%a %U:%G %n' /root/.config/ozon-mcp/env /root/.config/ozon-mcp/perf.env
 [ ] Performance initialize OK
 [ ] 48/48 Performance describe OK
 [ ] harmless Performance READ OK
-[ ] fresh category tree READ done
-[ ] category disabled status known
+[ ] fresh category tree READ done — only when current category work is requested
+[ ] category disabled status known — only when current category work is requested
 [ ] no secrets in output
 ```
 
@@ -575,8 +581,8 @@ stat -c '%a %U:%G %n' /root/.config/ozon-mcp/env /root/.config/ozon-mcp/perf.env
 - service inactive;
 - nginx -t fails;
 - env permissions != 600;
-- category disabled;
-- import returns forbidden category;
+- category disabled — только если выполняется явно запрошенная текущая работа с категорией;
+- import returns forbidden category — только если явно запрошен текущий import workflow;
 - API endpoint unexpectedly returns 404/410;
 - operation safety unexpectedly changes;
 - runtime catalog differs from tracked patch;
@@ -593,6 +599,6 @@ stat -c '%a %U:%G %n' /root/.config/ozon-mcp/env /root/.config/ozon-mcp/perf.env
 - server/PERFORMANCE_RUNTIME.md — Performance runtime
 - docs/OZON_OPERATIONS.md — operation map
 - docs/TEST_HISTORY.md — фактические тесты
-- docs/MASS_CATALOG_IMPORT_PLAN.md — 293 import
+- docs/MASS_CATALOG_IMPORT_PLAN.md — исторический план 293, не текущая задача
 - docs/PERFORMANCE_API_MATRIX_2026-09-26.md — 48 Performance ops
 - docs/AI_MAINTENANCE.md — правила для будущего AI
