@@ -122,7 +122,37 @@ Ozon API READ:
 - protocolVersion = 2025-03-26;
 - serverInfo = ozon_perf_mcp 1.30.0.
 
-48/48 only proves catalog loading and operation visibility; это не является доказательством бизнес-операций Performance.
+### Performance READ coverage — 2026-10-09
+
+Проверен реальный E2E READ через runtime `ozon_perf_call_method`:
+
+1. `ozonperf_get_api_client_campaign`
+   - GET `/api/client/campaign`
+   - safety = read
+   - profile = `PERFORMANCE-RU`
+   - HTTP 200
+   - data: `list=[]`, `total="0"`
+
+2. `ozonperf_get_api_client_statistics_campaign_product`
+   - GET `/api/client/statistics/campaign/product`
+   - safety = read
+   - profile = `PERFORMANCE-RU`
+   - HTTP 200
+   - API вернул корректную CSV-структуру статистики; фактических кампаний нет, поэтому возвращена строка заголовков.
+
+3. `ozonperf_get_api_client_campaign`
+   - GET `/api/client/campaign`
+   - safety = read
+   - profile = `PERFORMANCE-BY`
+   - HTTP 200
+   - data: `list=[]`, `total="0"`
+
+Дополнительно подтверждено:
+- `ozon_perf_call_method` действительно является READ-only runtime tool;
+- без profile вызов блокируется с требованием `PERFORMANCE-RU` или `PERFORMANCE-BY`;
+- `PERFORMANCE-RU` и `PERFORMANCE-BY` оба реально проходят E2E READ;
+- write/delete операции в ходе coverage не выполнялись;
+- 48/48 catalog visibility + реальные READ ответы теперь вместе подтверждают не только загрузку каталога, но и фактическую работу нескольких безопасных Performance endpoints.
 
 ## 7. Current next steps
 
@@ -130,8 +160,8 @@ Ozon API READ:
 2. Public Seller MCP initialize — **DONE / PASS**.
 3. Public Seller Ozon READ `ozon_check_auth` — **DONE / PASS**.
 4. Public Seller Ozon READ `ozon_get_products(limit=1)` — **DONE / PASS**.
-5. Performance READ coverage — отдельный следующий этап.
-6. После Performance READ coverage — определить минимальный AI-visible tool set.
+5. Performance READ coverage — **DONE / PASS**.
+6. Следующий этап — определить минимальный AI-visible tool set.
 7. Digital posting/code/delivery remains a separate later stage.
 
 Не делать:
