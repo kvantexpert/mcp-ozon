@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="1000" viewBox="0 0 750 1000">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#061a2d"/><stop offset=".55" stop-color="#103653"/><stop offset="1" stop-color="#091b2a"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffdf86"/><stop offset="1" stop-color="#c58c27"/></linearGradient>
+ <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e6f3f7"/><stop offset="1" stop-color="#b5d2dc"/></linearGradient>
+ <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173a52"/><stop offset="1" stop-color="#071523"/></linearGradient>
+ <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#80a8bd" stroke-opacity=".1" stroke-width="1"/></pattern>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".38"/></filter>
+</defs>
+<rect width="750" height="1000" fill="url(#bg)"/><rect width="750" height="1000" fill="url(#grid)"/>
+<circle cx="690" cy="310" r="245" fill="#d29b43" opacity=".06"/><path d="M0 405L750 220V760H0Z" fill="#0d2940" opacity=".7"/>
+<!-- 1C brand marker -->
+<g transform="translate(44 38)"><path d="M0 23Q12 0 39 0H108Q119 0 119 11V63Q119 75 106 75H18Q0 75 0 57Z" fill="#ffcf18"/><text x="8" y="51" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="#d51e24">1C</text></g>
+<text x="182" y="73" fill="url(#gold)" font-family="Arial,sans-serif" font-weight="700" font-size="27">1С:БУХГАЛТЕРИЯ</text>
+<text x="48" y="139" fill="#f7fafc" font-family="Arial,sans-serif" font-weight="700" font-size="43">ГОСУДАРСТВЕННОГО</text>
+<text x="48" y="190" fill="#f7fafc" font-family="Arial,sans-serif" font-weight="700" font-size="43">УЧРЕЖДЕНИЯ 8 КОРП</text>
+<rect x="48" y="211" width="650" height="3" rx="1.5" fill="url(#gold)"/>
+<text x="49" y="258" fill="#e9f0f4" font-family="Arial,sans-serif" font-size="29">Электронная поставка</text>
+<!-- institutional building silhouette -->
+<g transform="translate(435 305)" opacity=".96">
+ <path d="M0 92L130 20L260 92Z" fill="#cbd8dd"/><path d="M13 96H247V110H13Z" fill="#aebfc9"/>
+ <g fill="#c4d2d8" stroke="#e5edf0" stroke-width="2">
+ <rect x="28" y="111" width="204" height="153" fill="#9ab0bd"/>
+ <rect x="14" y="108" width="232" height="12"/><rect x="8" y="266" width="244" height="14"/>
+ <path d="M40 128h24v125H40zM83 128h24v125H83zM126 128h24v125H126zM169 128h24v125H169zM212 128h12v125h-12z" fill="#e1e8ec"/>
+ </g>
+ <path d="M0 284H260" stroke="#d3a246" stroke-width="4"/>
+ <path d="M35 296H225M60 308H200" stroke="#9aabb6" stroke-width="7"/>
+</g>
+<!-- feature tiles -->
+<g font-family="Arial,sans-serif" text-anchor="middle">
+ <g transform="translate(48 307)"><rect width="176" height="105" rx="15" fill="#102c42" stroke="#cda14f" stroke-width="1.5"/><circle cx="88" cy="32" r="19" fill="none" stroke="url(#gold)" stroke-width="2.5"/><path d="M78 25h20v18H78zM82 30h12M82 35h12" fill="none" stroke="#ffdc83" stroke-width="2"/><text x="88" y="72" font-size="17" font-weight="700" fill="#f6f9fb">БУХГАЛТЕРСКИЙ</text><text x="88" y="92" font-size="17" fill="#f6f9fb">УЧЁТ</text></g>
+ <g transform="translate(240 307)"><rect width="176" height="105" rx="15" fill="#102c42" stroke="#cda14f" stroke-width="1.5"/><circle cx="88" cy="32" r="19" fill="none" stroke="url(#gold)" stroke-width="2.5"/><path d="M75 42V31H83V42M87 42V24H95V42M99 42V18H107V42" fill="none" stroke="#ffdc83" stroke-width="3"/><text x="88" y="72" font-size="17" font-weight="700" fill="#f6f9fb">БЮДЖЕТНАЯ</text><text x="88" y="92" font-size="17" fill="#f6f9fb">ОТЧЁТНОСТЬ</text></g>
+ <g transform="translate(432 307)"><rect width="176" height="105" rx="15" fill="#102c42" stroke="#cda14f" stroke-width="1.5"/><circle cx="88" cy="32" r="19" fill="none" stroke="url(#gold)" stroke-width="2.5"/><path d="M78 20h18v25H78zM82 27h10M82 32h10M82 37h7" fill="none" stroke="#ffdc83" stroke-width="2"/><text x="88" y="72" font-size="17" font-weight="700" fill="#f6f9fb">ЭЛЕКТРОННЫЙ</text><text x="88" y="92" font-size="17" fill="#f6f9fb">ДОКУМЕНТООБОРОТ</text></g>
+</g>
+<!-- laptop and dashboard -->
+<g filter="url(#shadow)" transform="translate(49 475)">
+ <path d="M20 0H564Q578 0 578 15V298H7V15Q7 0 20 0Z" fill="#07111a" stroke="#8eabb9" stroke-width="2"/>
+ <rect x="22" y="17" width="541" height="261" rx="4" fill="url(#screen)"/>
+ <rect x="22" y="17" width="541" height="32" fill="#153e59"/><text x="39" y="39" font-family="Arial,sans-serif" font-size="14" fill="#fff" font-weight="700">1С • Бухгалтерия государственного учреждения</text>
+ <rect x="34" y="61" width="108" height="205" rx="3" fill="#d0e3e9"/>
+ <g font-family="Arial,sans-serif" font-size="12" fill="#24485f"><text x="44" y="84">Главное</text><text x="44" y="108">Банк и касса</text><text x="44" y="132">Покупки</text><text x="44" y="156">Продажи</text><text x="44" y="180">Отчёты</text><text x="44" y="204">Бюджет</text><text x="44" y="228">Документы</text></g>
+ <rect x="154" y="61" width="190" height="92" rx="7" fill="#fbfdfe"/><text x="167" y="81" font-family="Arial,sans-serif" font-size="12" fill="#234d65" font-weight="700">ФИНАНСОВЫЕ ПОКАЗАТЕЛИ</text>
+ <path d="M166 134L190 116L210 123L232 97L251 108L275 86L301 101L329 78" fill="none" stroke="#168da3" stroke-width="3"/><path d="M166 139H330" stroke="#789dac" stroke-width="1"/>
+ <rect x="356" y="61" width="195" height="92" rx="7" fill="#fbfdfe"/><text x="369" y="81" font-family="Arial,sans-serif" font-size="12" fill="#234d65" font-weight="700">ИСПОЛНЕНИЕ БЮДЖЕТА</text>
+ <circle cx="406" cy="116" r="24" fill="none" stroke="#1695a6" stroke-width="12"/><path d="M406 92A24 24 0 0 1 428 126" fill="none" stroke="#efb83d" stroke-width="12"/><text x="443" y="116" font-family="Arial,sans-serif" font-size="17" fill="#234d65" font-weight="700">76%</text>
+ <rect x="154" y="164" width="397" height="102" rx="7" fill="#fbfdfe"/><text x="167" y="185" font-family="Arial,sans-serif" font-size="12" fill="#234d65" font-weight="700">ЖУРНАЛ ОПЕРАЦИЙ И ОТЧЁТНОСТЬ</text>
+ <g stroke="#cadce3" stroke-width="1"><path d="M165 196H540M165 214H540M165 232H540M165 250H540"/></g>
+ <g fill="#34576b" font-family="Arial,sans-serif" font-size="10"><text x="169" y="208">Платёжные документы</text><text x="169" y="226">Учёт обязательств</text><text x="169" y="244">Бюджетные отчёты</text><text x="169" y="262">Контроль операций</text></g>
+ <path d="M-10 298H594L627 319Q626 327 609 327H-27Q-37 327-34 318Z" fill="#b5c7d1" stroke="#e8eef2" stroke-width="2"/>
+ <path d="M196 300H388L376 311H209Z" fill="#829ca9"/>
+</g>
+<!-- bottom label -->
+<g transform="translate(103 855)"><rect width="544" height="91" rx="18" fill="#061b2b" stroke="url(#gold)" stroke-width="3"/><circle cx="62" cy="45" r="28" fill="none" stroke="#ffda7a" stroke-width="3"/><path d="M62 25V53M50 43L62 55L74 43M46 63H78" fill="none" stroke="#ffda7a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M112 19V71" stroke="#cda14f" stroke-width="2"/><text x="142" y="55" fill="#f4f7f9" font-family="Arial,sans-serif" font-size="29" font-weight="700">ЭЛЕКТРОННАЯ ПОСТАВКА</text></g>
+</svg>
