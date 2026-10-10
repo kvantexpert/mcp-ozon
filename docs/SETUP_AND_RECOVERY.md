@@ -251,5 +251,9 @@ search_methods
 - Приватный ключ остаётся на VPS в `/home/ozon-desktop/.ssh/` с правами доступа только владельцу; его запрещено отправлять в чат, добавлять в репозиторий или копировать в документацию.
 - В GitHub добавляется только публичный ключ (.pub).
 - Deploy Key привязан только к одному репозиторию. Для другого репозитория создаётся отдельный ключ.
-- **Статус на 2026-10-10:** ключ сгенерирован; требуется ручное добавление в GitHub Deploy keys. Пока успешная SSH-аутентификация к `kvantexpert/mcp-ozon` не подтверждена. До проверки не заявлять, что доступ готов.
+- **Статус на 2026-10-10:** публичный ключ добавлен в GitHub Deploy keys; SSH-аутентификация подтверждена с VPS командой `git ls-remote git@github.com:kvantexpert/mcp-ozon.git HEAD`. Проверенный ответ HEAD: `d5469e154fd03a555fa7569b89ff6f6b99c82dd8`.
+- Для подключения настроен `/home/ozon-desktop/.ssh/config`: хост `github.com`, `IdentityFile=/home/ozon-desktop/.ssh/github-mcp-ozon-readonly`, `IdentitiesOnly=yes`, `StrictHostKeyChecking=yes`.
+- GitHub host key проверен по ED25519 fingerprint `SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU`; доверенный ключ хранится в `/home/ozon-desktop/.ssh/known_hosts`.
+- Успешно выполнена только READ-проверка; WRITE-команды не запускались. В настройках Deploy Key параметр **Allow write access** должен оставаться выключенным.
+- Файлы на сервере: приватный ключ — режим `600`, публичный ключ — режим `644`.
 - Создание ключа и подготовка документации не требуют рестарта `ozon-mcp.service` или `ozon-performance.service`; сервисы не перезапускать ради настройки Deploy Key.
