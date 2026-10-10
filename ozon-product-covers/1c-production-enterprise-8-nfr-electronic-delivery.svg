@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="1000" viewBox="0 0 750 1000">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071a2a"/><stop offset=".5" stop-color="#153c51"/><stop offset="1" stop-color="#081724"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe49b"/><stop offset="1" stop-color="#bd8628"/></linearGradient>
+ <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f3f9fb"/><stop offset="1" stop-color="#bfd9e3"/></linearGradient>
+ <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#8db1c2" stroke-opacity=".11"/></pattern>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".4"/></filter>
+</defs>
+<rect width="750" height="1000" fill="url(#bg)"/><rect width="750" height="1000" fill="url(#grid)"/>
+<circle cx="610" cy="405" r="260" fill="#d5a147" opacity=".065"/><path d="M0 485L750 305V800H0Z" fill="#0a263a" opacity=".8"/>
+<g transform="translate(42 34)"><path d="M0 22Q12 0 38 0H105Q119 0 119 13V62Q119 76 105 76H18Q0 76 0 57Z" fill="#ffd319"/><text x="8" y="51" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="#d51e24">1C</text></g>
+<text x="181" y="70" fill="url(#gold)" font-family="Arial,sans-serif" font-weight="700" font-size="25">УПРАВЛЕНИЕ ПРОИЗВОДСТВОМ</text>
+<text x="47" y="136" fill="#f8fbfd" font-family="Arial,sans-serif" font-weight="700" font-size="46">ПРОИЗВОДСТВЕННОЕ</text>
+<text x="47" y="186" fill="#f8fbfd" font-family="Arial,sans-serif" font-weight="700" font-size="46">ПРЕДПРИЯТИЕ 8</text>
+<rect x="48" y="207" width="651" height="3" rx="1.5" fill="url(#gold)"/>
+<text x="49" y="252" fill="#e8f1f4" font-family="Arial,sans-serif" font-size="28">NFR • Электронная поставка</text>
+<!-- factory / production building -->
+<g transform="translate(450 275)" opacity=".92">
+ <path d="M0 85V36L60 66V36L120 66V20L174 47V85Z" fill="#a9c0ca"/>
+ <rect x="0" y="85" width="240" height="153" fill="#698c9e"/>
+ <rect x="15" y="100" width="35" height="38" fill="#d8e8ed"/><rect x="60" y="100" width="35" height="38" fill="#d8e8ed"/><rect x="105" y="100" width="35" height="38" fill="#d8e8ed"/><rect x="150" y="100" width="35" height="38" fill="#d8e8ed"/><rect x="195" y="100" width="28" height="38" fill="#d8e8ed"/>
+ <rect x="16" y="157" width="36" height="65" fill="#16374c"/><rect x="60" y="157" width="36" height="65" fill="#16374c"/><rect x="104" y="157" width="36" height="65" fill="#16374c"/><rect x="148" y="157" width="36" height="65" fill="#16374c"/><rect x="192" y="157" width="31" height="65" fill="#16374c"/>
+ <path d="M3 239H238" stroke="#d5aa5a" stroke-width="4"/><path d="M19 254H223" stroke="#94aeb9" stroke-width="8"/>
+ <path d="M178 20V0H204V33" fill="none" stroke="#c7d9e1" stroke-width="8"/><path d="M194 0q-12-17 0-26q12 15 0 26" fill="#a9c9d4" opacity=".7"/>
+</g>
+<!-- modules -->
+<g font-family="Arial,sans-serif" text-anchor="middle">
+ <g transform="translate(48 284)"><rect width="178" height="96" rx="14" fill="#102f45" stroke="#cda14f" stroke-width="1.5"/><circle cx="89" cy="30" r="18" fill="none" stroke="url(#gold)" stroke-width="2.5"/><path d="M77 34L84 27L91 32L101 21M96 21H101V26" fill="none" stroke="#ffe39a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><text x="89" y="67" fill="#f4f8fb" font-size="16" font-weight="700">ПЛАНИРОВАНИЕ</text><text x="89" y="86" fill="#f4f8fb" font-size="15">производства</text></g>
+ <g transform="translate(242 284)"><rect width="178" height="96" rx="14" fill="#102f45" stroke="#cda14f" stroke-width="1.5"/><circle cx="89" cy="30" r="18" fill="none" stroke="url(#gold)" stroke-width="2.5"/><path d="M77 40V27H84V40M88 40V20H95V40M99 40V31H106V40" fill="none" stroke="#ffe39a" stroke-width="2.5"/><text x="89" y="67" fill="#f4f8fb" font-size="16" font-weight="700">УПРАВЛЕНИЕ</text><text x="89" y="86" fill="#f4f8fb" font-size="15">ресурсами</text></g>
+</g>
+<!-- ERP computer interface -->
+<g filter="url(#shadow)" transform="translate(42 426)">
+ <path d="M18 0H645Q660 0 660 16V319H4V16Q4 0 18 0Z" fill="#07131e" stroke="#8baab9" stroke-width="2"/>
+ <rect x="18" y="16" width="632" height="289" rx="4" fill="url(#screen)"/>
+ <rect x="18" y="16" width="632" height="34" fill="#153e59"/><text x="34" y="39" font-family="Arial,sans-serif" font-size="14" fill="#fff" font-weight="700">1С • Управление производственным предприятием 8</text>
+ <rect x="29" y="61" width="132" height="232" rx="3" fill="#d7e8ed"/>
+ <g font-family="Arial,sans-serif" font-size="13" fill="#264c60"><text x="40" y="84">Главное</text><text x="40" y="111">Производство</text><text x="40" y="138">Планирование</text><text x="40" y="165">Снабжение</text><text x="40" y="192">Склад</text><text x="40" y="219">Продажи</text><text x="40" y="246">Финансы</text><text x="40" y="273">Отчёты</text></g>
+ <rect x="173" y="61" width="456" height="39" rx="6" fill="#fbfdfe"/><text x="190" y="85" font-family="Arial,sans-serif" font-size="15" fill="#244d63" font-weight="700">ПРОИЗВОДСТВЕННЫЙ КОНТУР</text>
+ <rect x="173" y="110" width="220" height="179" rx="6" fill="#fbfdfe"/><text x="187" y="132" font-family="Arial,sans-serif" font-size="12" fill="#31586b" font-weight="700">ВЫПУСК ПРОДУКЦИИ</text>
+ <path d="M190 256L216 234L241 241L265 202L289 211L313 178L338 192L371 155" fill="none" stroke="#168ca0" stroke-width="3"/><path d="M190 267H372" stroke="#b5cbd4" stroke-width="1.5"/><path d="M190 170H372M190 200H372M190 230H372" stroke="#d7e5ea" stroke-width="1"/>
+ <rect x="405" y="110" width="224" height="179" rx="6" fill="#fbfdfe"/><text x="419" y="132" font-family="Arial,sans-serif" font-size="12" fill="#31586b" font-weight="700">ЗАГРУЗКА МОЩНОСТЕЙ</text>
+ <circle cx="466" cy="193" r="30" fill="none" stroke="#1a92a6" stroke-width="13"/><path d="M466 163A30 30 0 0 1 492 208" fill="none" stroke="#e4b33e" stroke-width="13"/><text x="510" y="193" font-family="Arial,sans-serif" font-size="16" fill="#244d63" font-weight="700">76%</text>
+ <g font-family="Arial,sans-serif" font-size="11" fill="#355b6e"><text x="419" y="246">Планы выпуска</text><text x="419" y="265">Материальные ресурсы</text><text x="419" y="282">Себестоимость продукции</text></g>
+ <path d="M-13 319H677L647 342H18Z" fill="#b2c5cf" stroke="#edf3f6" stroke-width="2"/><path d="M268 323H408L393 334H283Z" fill="#829ba9"/>
+</g>
+<g transform="translate(110 817)"><rect width="530" height="70" rx="17" fill="#102e42" stroke="#cea452" stroke-width="2"/><circle cx="45" cy="35" r="22" fill="none" stroke="#ffda79" stroke-width="2.5"/><path d="M30 35H57M49 27L57 35L49 43" fill="none" stroke="#ffda79" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M84 15V55" stroke="#cda14f" stroke-width="2"/><text x="108" y="43" font-family="Arial,sans-serif" font-size="24" fill="#f4f8fb" font-weight="700">ЭЛЕКТРОННАЯ ПОСТАВКА</text></g>
+<text x="375" y="930" font-family="Arial,sans-serif" font-size="14" fill="#a7c0cd" text-anchor="middle">ПЛАНИРОВАНИЕ • РЕСУРСЫ • ПРОИЗВОДСТВО</text>
+</svg>
