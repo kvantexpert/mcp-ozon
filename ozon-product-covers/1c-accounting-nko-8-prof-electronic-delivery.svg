@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="1000" viewBox="0 0 750 1000">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#081a2b"/><stop offset=".52" stop-color="#174158"/><stop offset="1" stop-color="#061724"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe6a1"/><stop offset="1" stop-color="#c08a30"/></linearGradient>
+ <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f5fafc"/><stop offset="1" stop-color="#c2dbe5"/></linearGradient>
+ <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#8fb8c8" stroke-opacity=".1"/></pattern>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".4"/></filter>
+</defs>
+<rect width="750" height="1000" fill="url(#bg)"/><rect width="750" height="1000" fill="url(#grid)"/>
+<circle cx="610" cy="394" r="245" fill="#d6a147" opacity=".06"/><path d="M0 488L750 313V1000H0Z" fill="#09253a" opacity=".8"/>
+<g transform="translate(42 32)"><rect width="100" height="72" rx="14" fill="#ffd319"/><text x="50" y="48" text-anchor="middle" font-family="Arial,sans-serif" font-size="37" font-weight="900" fill="#cd202b">1С</text></g>
+<text x="165" y="62" fill="url(#gold)" font-family="Arial,sans-serif" font-size="22" font-weight="700">БУХГАЛТЕРИЯ НКО</text>
+<text x="46" y="141" fill="#f8fbfd" font-family="Arial,sans-serif" font-weight="800" font-size="46">БУХГАЛТЕРИЯ</text>
+<text x="46" y="193" fill="#f8fbfd" font-family="Arial,sans-serif" font-weight="800" font-size="46">НКО 8 ПРОФ</text>
+<rect x="47" y="215" width="655" height="3" rx="1.5" fill="url(#gold)"/>
+<text x="48" y="257" fill="#e8f2f6" font-family="Arial,sans-serif" font-size="27">Для некоммерческих организаций</text>
+<!-- Feature cards -->
+<g font-family="Arial,sans-serif" text-anchor="middle">
+ <g transform="translate(48 291)"><rect width="150" height="100" rx="14" fill="#102e44" stroke="#cda14f" stroke-width="1.4"/><rect x="52" y="13" width="46" height="39" rx="4" fill="none" stroke="#ffe39a" stroke-width="2.5"/><path d="M60 23H90M60 32H90M60 41H80" stroke="#ffe39a" stroke-width="2"/><text x="75" y="76" fill="#f4f8fb" font-size="15" font-weight="700">БУХГАЛТЕРСКИЙ</text><text x="75" y="93" fill="#f4f8fb" font-size="15">УЧЁТ</text></g>
+ <g transform="translate(216 291)"><rect width="150" height="100" rx="14" fill="#102e44" stroke="#cda14f" stroke-width="1.4"/><path d="M47 45L60 31L72 38L91 17L104 24" fill="none" stroke="#ffe39a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M48 53H104" stroke="#ffe39a" stroke-width="2"/><text x="75" y="76" fill="#f4f8fb" font-size="15" font-weight="700">ОТЧЁТНОСТЬ</text><text x="75" y="93" fill="#f4f8fb" font-size="15">И АНАЛИТИКА</text></g>
+ <g transform="translate(384 291)"><rect width="150" height="100" rx="14" fill="#102e44" stroke="#cda14f" stroke-width="1.4"/><circle cx="75" cy="31" r="15" fill="none" stroke="#ffe39a" stroke-width="2.5"/><path d="M47 54Q49 38 75 38Q101 38 103 54" fill="none" stroke="#ffe39a" stroke-width="2.5"/><text x="75" y="76" fill="#f4f8fb" font-size="15" font-weight="700">ЦЕЛЕВОЕ</text><text x="75" y="93" fill="#f4f8fb" font-size="15">ФИНАНСИРОВАНИЕ</text></g>
+ <g transform="translate(552 291)"><rect width="150" height="100" rx="14" fill="#102e44" stroke="#cda14f" stroke-width="1.4"/><circle cx="75" cy="31" r="19" fill="none" stroke="#ffe39a" stroke-width="2.5"/><path d="M75 17V45M61 31H89" stroke="#ffe39a" stroke-width="2.5"/><text x="75" y="76" fill="#f4f8fb" font-size="15" font-weight="700">ГРАНТЫ</text><text x="75" y="93" fill="#f4f8fb" font-size="15">И СМЕТЫ</text></g>
+</g>
+<!-- accounting interface -->
+<g filter="url(#shadow)" transform="translate(40 430)">
+ <path d="M20 0H648Q664 0 664 16V315H4V16Q4 0 20 0Z" fill="#06121d" stroke="#8baab9" stroke-width="2"/>
+ <rect x="19" y="15" width="636" height="286" rx="4" fill="url(#screen)"/>
+ <rect x="19" y="15" width="636" height="36" fill="#153e59"/><text x="35" y="39" font-family="Arial,sans-serif" font-size="14" fill="#fff" font-weight="700">1С • БУХГАЛТЕРИЯ НКО 8 ПРОФ</text>
+ <rect x="29" y="62" width="138" height="229" rx="3" fill="#d5e7ed"/>
+ <g font-family="Arial,sans-serif" font-size="13" fill="#264c60"><text x="41" y="85">Главное</text><text x="41" y="113">Учёт операций</text><text x="41" y="141">Поступления</text><text x="41" y="169">Расходы</text><text x="41" y="197">Целевые средства</text><text x="41" y="225">Контрагенты</text><text x="41" y="253">Отчёты</text><text x="41" y="281">Регистры</text></g>
+ <rect x="180" y="62" width="459" height="42" rx="6" fill="#fff"/><text x="196" y="88" font-family="Arial,sans-serif" font-size="15" fill="#244d63" font-weight="700">УЧЁТ И ФИНАНСОВЫЕ ОПЕРАЦИИ</text>
+ <rect x="180" y="113" width="222" height="178" rx="6" fill="#fbfdfe"/><text x="195" y="135" font-family="Arial,sans-serif" font-size="12" fill="#31586b" font-weight="700">ДИНАМИКА РАСХОДОВ</text>
+ <path d="M197 254L222 230L246 238L271 205L295 213L321 180L346 191L383 157" fill="none" stroke="#168ca0" stroke-width="3"/><path d="M197 266H382" stroke="#b5cbd4" stroke-width="1.5"/><path d="M197 169H382M197 199H382M197 229H382" stroke="#d7e5ea" stroke-width="1"/>
+ <rect x="414" y="113" width="225" height="178" rx="6" fill="#fbfdfe"/><text x="429" y="135" font-family="Arial,sans-serif" font-size="12" fill="#31586b" font-weight="700">СТРУКТУРА ФИНАНСОВ</text>
+ <circle cx="474" cy="194" r="29" fill="none" stroke="#1a92a6" stroke-width="12"/><path d="M474 165A29 29 0 0 1 498 207" fill="none" stroke="#e4b33e" stroke-width="12"/><text x="514" y="194" font-family="Arial,sans-serif" font-size="16" fill="#244d63" font-weight="700">84%</text>
+ <g font-family="Arial,sans-serif" font-size="11" fill="#355b6e"><text x="428" y="245">План и факт</text><text x="428" y="264">Целевые поступления</text><text x="428" y="283">Бухгалтерские формы</text></g>
+ <path d="M-12 315H681L647 339H21Z" fill="#b2c5cf" stroke="#edf3f6" stroke-width="2"/><path d="M268 319H409L394 331H282Z" fill="#829ba9"/>
+</g>
+<g transform="translate(94 813)"><rect width="562" height="74" rx="17" fill="#102e42" stroke="#cea452" stroke-width="2"/><circle cx="44" cy="37" r="22" fill="none" stroke="#ffda79" stroke-width="2.5"/><path d="M29 37H57M49 29L57 37L49 45" fill="none" stroke="#ffda79" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M83 17V57" stroke="#cda14f" stroke-width="2"/><text x="105" y="32" font-family="Arial,sans-serif" font-size="21" fill="#f4f8fb" font-weight="700">ПРОФЕССИОНАЛЬНАЯ ВЕРСИЯ</text><text x="105" y="56" font-family="Arial,sans-serif" font-size="18" fill="#f4f8fb">ЭЛЕКТРОННАЯ ПОСТАВКА</text></g>
+<text x="375" y="928" font-family="Arial,sans-serif" font-size="14" fill="#a7c0cd" text-anchor="middle">УЧЁТ НКО • ФИНАНСИРОВАНИЕ • ОТЧЁТНОСТЬ</text>
+</svg>
