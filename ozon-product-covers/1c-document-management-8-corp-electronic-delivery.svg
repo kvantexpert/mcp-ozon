@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="1000" viewBox="0 0 750 1000">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071b2b"/><stop offset=".55" stop-color="#103d55"/><stop offset="1" stop-color="#061722"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe8a4"/><stop offset="1" stop-color="#c28a2f"/></linearGradient>
+  <linearGradient id="card" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#184a66"/><stop offset="1" stop-color="#0a2639"/></linearGradient>
+  <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#9dc0ce" stroke-opacity=".09"/></pattern>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".35"/></filter>
+</defs>
+<rect width="750" height="1000" fill="url(#bg)"/><rect width="750" height="1000" fill="url(#grid)"/>
+<circle cx="602" cy="384" r="250" fill="#d9a74c" opacity=".055"/>
+<path d="M0 525L750 337V1000H0Z" fill="#071f31" opacity=".72"/>
+<g transform="translate(42 35)"><rect width="96" height="67" rx="14" fill="#ffd319"/><text x="48" y="45" text-anchor="middle" font-family="Arial,sans-serif" font-size="34" font-weight="900" fill="#c9202d">1С</text></g>
+<text x="160" y="61" fill="url(#gold)" font-family="Arial,sans-serif" font-size="19" font-weight="700" letter-spacing="1.2">КОРПОРАТИВНАЯ СИСТЕМА</text>
+<text x="45" y="145" fill="#f8fbfd" font-family="Arial,sans-serif" font-size="43" font-weight="800">ДОКУМЕНТООБОРОТ</text>
+<text x="47" y="197" fill="#f8fbfd" font-family="Arial,sans-serif" font-size="42" font-weight="800">8 КОРП</text>
+<rect x="47" y="220" width="655" height="3" rx="1.5" fill="url(#gold)"/>
+<text x="48" y="263" fill="#e6f1f6" font-family="Arial,sans-serif" font-size="26">Электронная поставка</text>
+<!-- Workflow cards -->
+<g font-family="Arial,sans-serif" text-anchor="middle">
+ <g transform="translate(48 306)"><rect width="150" height="117" rx="15" fill="url(#card)" stroke="#bd9a54" stroke-opacity=".85"/><path d="M59 18H87L101 32V61H59Z" fill="none" stroke="#f6dda0" stroke-width="3" stroke-linejoin="round"/><path d="M87 18V32H101M68 40H91M68 48H91M68 56H83" stroke="#f6dda0" stroke-width="2.2" fill="none"/><text x="75" y="88" fill="#f7fbfd" font-size="16" font-weight="700">ДОКУМЕНТЫ</text><text x="75" y="106" fill="#bbd4df" font-size="13">единая база</text></g>
+ <g transform="translate(216 306)"><rect width="150" height="117" rx="15" fill="url(#card)" stroke="#bd9a54" stroke-opacity=".85"/><circle cx="75" cy="43" r="26" fill="none" stroke="#f6dda0" stroke-width="3"/><path d="M61 43L70 52L90 31" fill="none" stroke="#f6dda0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="75" y="88" fill="#f7fbfd" font-size="16" font-weight="700">СОГЛАСОВАНИЕ</text><text x="75" y="106" fill="#bbd4df" font-size="13">маршруты задач</text></g>
+ <g transform="translate(384 306)"><rect width="150" height="117" rx="15" fill="url(#card)" stroke="#bd9a54" stroke-opacity=".85"/><circle cx="75" cy="42" r="24" fill="none" stroke="#f6dda0" stroke-width="3"/><path d="M75 27V43L87 51" fill="none" stroke="#f6dda0" stroke-width="3" stroke-linecap="round"/><text x="75" y="88" fill="#f7fbfd" font-size="16" font-weight="700">КОНТРОЛЬ</text><text x="75" y="106" fill="#bbd4df" font-size="13">сроки и статусы</text></g>
+ <g transform="translate(552 306)"><rect width="150" height="117" rx="15" fill="url(#card)" stroke="#bd9a54" stroke-opacity=".85"/><circle cx="75" cy="36" r="12" fill="none" stroke="#f6dda0" stroke-width="3"/><path d="M50 66Q52 48 75 48Q98 48 100 66" fill="none" stroke="#f6dda0" stroke-width="3"/><path d="M57 70H93" stroke="#f6dda0" stroke-width="3"/><text x="75" y="88" fill="#f7fbfd" font-size="16" font-weight="700">КОМАНДА</text><text x="75" y="106" fill="#bbd4df" font-size="13">совместная работа</text></g>
+</g>
+<!-- Desk / main document management interface -->
+<g filter="url(#shadow)" transform="translate(40 462)">
+ <path d="M22 0H648Q664 0 664 17V340H5V17Q5 0 22 0Z" fill="#050f18" stroke="#88afc1" stroke-width="2"/>
+ <rect x="19" y="15" width="636" height="311" rx="4" fill="#e9f3f6"/>
+ <rect x="19" y="15" width="636" height="38" fill="#123b55"/>
+ <text x="36" y="40" font-family="Arial,sans-serif" font-size="15" fill="#fff" font-weight="700">РАБОЧЕЕ ПРОСТРАНСТВО • ДОКУМЕНТЫ</text>
+ <rect x="29" y="65" width="140" height="249" rx="4" fill="#d5e7ed"/>
+ <g font-family="Arial,sans-serif" font-size="14" fill="#234b60"><text x="43" y="92">Входящие</text><text x="43" y="123">На согласовании</text><text x="43" y="154">Исходящие</text><text x="43" y="185">Договоры</text><text x="43" y="216">Архив</text><text x="43" y="247">Мои задачи</text><text x="43" y="278">Отчёты</text></g>
+ <rect x="181" y="65" width="459" height="48" rx="6" fill="#fff"/><text x="197" y="85" font-family="Arial,sans-serif" font-size="11" fill="#5b7786">ПОИСК ДОКУМЕНТОВ</text><path d="M198 99H470" stroke="#d1e0e5" stroke-width="2"/><circle cx="613" cy="88" r="9" fill="none" stroke="#3c6e83" stroke-width="2"/><path d="M620 95L627 102" stroke="#3c6e83" stroke-width="2.5" stroke-linecap="round"/>
+ <rect x="181" y="124" width="459" height="190" rx="6" fill="#fbfdfe"/>
+ <text x="198" y="148" font-family="Arial,sans-serif" font-size="13" fill="#254e62" font-weight="700">ПОСЛЕДНИЕ ДОКУМЕНТЫ</text>
+ <g>
+  <rect x="196" y="161" width="429" height="32" rx="4" fill="#edf5f8"/><rect x="207" y="169" width="13" height="16" rx="2" fill="#d8b25f"/><path d="M224 171H359M224 178H328" stroke="#84a6b5" stroke-width="2"/><rect x="528" y="169" width="82" height="16" rx="8" fill="#dff2e8"/><text x="569" y="181" font-family="Arial,sans-serif" font-size="10" fill="#2b7659" text-anchor="middle">Согласован</text>
+  <rect x="196" y="200" width="429" height="32" rx="4" fill="#edf5f8"/><rect x="207" y="208" width="13" height="16" rx="2" fill="#d8b25f"/><path d="M224 210H359M224 217H328" stroke="#84a6b5" stroke-width="2"/><rect x="528" y="208" width="82" height="16" rx="8" fill="#fff0d4"/><text x="569" y="220" font-family="Arial,sans-serif" font-size="10" fill="#98631b" text-anchor="middle">На проверке</text>
+  <rect x="196" y="239" width="429" height="32" rx="4" fill="#edf5f8"/><rect x="207" y="247" width="13" height="16" rx="2" fill="#d8b25f"/><path d="M224 249H359M224 256H328" stroke="#84a6b5" stroke-width="2"/><rect x="528" y="247" width="82" height="16" rx="8" fill="#dceaf4"/><text x="569" y="259" font-family="Arial,sans-serif" font-size="10" fill="#315d80" text-anchor="middle">В работе</text>
+  <rect x="196" y="278" width="429" height="24" rx="4" fill="#edf5f8"/><rect x="207" y="282" width="13" height="16" rx="2" fill="#d8b25f"/><path d="M224 288H359M224 294H328" stroke="#84a6b5" stroke-width="2"/>
+ </g>
+ <path d="M-12 340H681L647 365H22Z" fill="#a9c0ca" stroke="#edf4f7" stroke-width="2"/><path d="M260 344H410L394 356H276Z" fill="#718e9c"/>
+</g>
+<g transform="translate(95 865)"><rect width="560" height="66" rx="16" fill="#0c2b40" stroke="#c9a050" stroke-width="2"/><circle cx="40" cy="33" r="21" fill="none" stroke="#ffdc86" stroke-width="2.5"/><path d="M27 33H53M45 25L53 33L45 41" fill="none" stroke="#ffdc86" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M78 14V52" stroke="#c9a050" stroke-width="2"/><text x="99" y="28" font-family="Arial,sans-serif" font-size="19" fill="#f7fbfd" font-weight="700">1С:ДОКУМЕНТООБОРОТ 8 КОРП</text><text x="99" y="49" font-family="Arial,sans-serif" font-size="16" fill="#c6dce6">Электронная поставка</text></g>
+<text x="375" y="969" font-family="Arial,sans-serif" font-size="12" fill="#97b4c2" text-anchor="middle">ДОКУМЕНТЫ • СОГЛАСОВАНИЕ • КОРПОРАТИВНЫЙ КОНТРОЛЬ</text>
+</svg>
