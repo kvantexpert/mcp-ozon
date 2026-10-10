@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="1000" viewBox="0 0 750 1000">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#061a2d"/><stop offset=".55" stop-color="#153d55"/><stop offset="1" stop-color="#071724"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe49c"/><stop offset="1" stop-color="#c18a2c"/></linearGradient>
+ <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f3f9fb"/><stop offset="1" stop-color="#c4dce5"/></linearGradient>
+ <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#8db1c1" stroke-opacity=".11"/></pattern>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".4"/></filter>
+</defs>
+<rect width="750" height="1000" fill="url(#bg)"/><rect width="750" height="1000" fill="url(#grid)"/>
+<circle cx="616" cy="390" r="260" fill="#d6a147" opacity=".065"/><path d="M0 460L750 285V800H0Z" fill="#0a263a" opacity=".8"/>
+<g transform="translate(42 34)"><path d="M0 22Q12 0 38 0H105Q119 0 119 13V62Q119 76 105 76H18Q0 76 0 57Z" fill="#ffd319"/><text x="8" y="51" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="#d51e24">1C</text></g>
+<text x="181" y="70" fill="url(#gold)" font-family="Arial,sans-serif" font-weight="700" font-size="26">БУХГАЛТЕРИЯ 8</text>
+<text x="47" y="136" fill="#f8fbfd" font-family="Arial,sans-serif" font-weight="700" font-size="43">БАЗОВАЯ ВЕРСИЯ</text>
+<rect x="48" y="157" width="651" height="3" rx="1.5" fill="url(#gold)"/>
+<text x="49" y="204" fill="#e8f1f4" font-family="Arial,sans-serif" font-size="29">Электронная поставка</text>
+<!-- business building -->
+<g transform="translate(444 250)" opacity=".88">
+ <path d="M0 80L122 12L244 80Z" fill="#d9e4e8"/><rect x="9" y="81" width="226" height="14" fill="#a8c0cb"/>
+ <rect x="22" y="95" width="200" height="147" fill="#7595a4"/>
+ <g fill="#e1ebef" stroke="#f7fafb" stroke-width="2"><rect x="34" y="110" width="22" height="118"/><rect x="73" y="110" width="22" height="118"/><rect x="112" y="110" width="22" height="118"/><rect x="151" y="110" width="22" height="118"/><rect x="190" y="110" width="20" height="118"/></g>
+ <path d="M2 244H242" stroke="#d8ad5e" stroke-width="4"/><path d="M16 260H228" stroke="#99b1bc" stroke-width="8"/>
+</g>
+<!-- feature cards -->
+<g font-family="Arial,sans-serif" text-anchor="middle">
+ <g transform="translate(48 250)"><rect width="176" height="98" rx="14" fill="#102f45" stroke="#cda14f" stroke-width="1.5"/><circle cx="88" cy="30" r="18" fill="none" stroke="url(#gold)" stroke-width="2.5"/><path d="M77 23H99V40H77Z M82 19H94V23M82 29H94M82 34H92" fill="none" stroke="#ffe39a" stroke-width="2"/><text x="88" y="68" fill="#f4f8fb" font-size="17" font-weight="700">БУХГАЛТЕРСКИЙ</text><text x="88" y="87" fill="#f4f8fb" font-size="17">УЧЁТ</text></g>
+ <g transform="translate(240 250)"><rect width="176" height="98" rx="14" fill="#102f45" stroke="#cda14f" stroke-width="1.5"/><circle cx="88" cy="30" r="18" fill="none" stroke="url(#gold)" stroke-width="2.5"/><path d="M75 41V22H101V41M81 35V29M88 35V25M95 35V31" fill="none" stroke="#ffe39a" stroke-width="2"/><text x="88" y="68" fill="#f4f8fb" font-size="16" font-weight="700">ОТЧЁТЫ</text><text x="88" y="87" fill="#f4f8fb" font-size="16">И АНАЛИТИКА</text></g>
+</g>
+<!-- laptop with generic accounting dashboard -->
+<g filter="url(#shadow)" transform="translate(42 405)">
+ <path d="M18 0H645Q660 0 660 16V319H4V16Q4 0 18 0Z" fill="#07131e" stroke="#8baab9" stroke-width="2"/>
+ <rect x="18" y="16" width="632" height="289" rx="4" fill="url(#screen)"/>
+ <rect x="18" y="16" width="632" height="34" fill="#153e59"/><text x="34" y="39" font-family="Arial,sans-serif" font-size="14" fill="#fff" font-weight="700">1С • Бухгалтерия 8</text>
+ <rect x="29" y="61" width="132" height="232" rx="3" fill="#d7e8ed"/>
+ <g font-family="Arial,sans-serif" font-size="13" fill="#264c60"><text x="40" y="84">Главное</text><text x="40" y="111">Банк и касса</text><text x="40" y="138">Покупки</text><text x="40" y="165">Продажи</text><text x="40" y="192">Склад</text><text x="40" y="219">Операции</text><text x="40" y="246">Отчёты</text><text x="40" y="273">Справочники</text></g>
+ <rect x="173" y="61" width="456" height="39" rx="6" fill="#fbfdfe"/><text x="190" y="85" font-family="Arial,sans-serif" font-size="15" fill="#244d63" font-weight="700">ОБЗОР БУХГАЛТЕРСКИХ ОПЕРАЦИЙ</text>
+ <rect x="173" y="110" width="220" height="179" rx="6" fill="#fbfdfe"/><text x="187" y="132" font-family="Arial,sans-serif" font-size="12" fill="#31586b" font-weight="700">ДВИЖЕНИЕ СРЕДСТВ</text>
+ <path d="M190 256L214 234L239 241L263 202L288 211L312 178L338 192L371 155" fill="none" stroke="#168ca0" stroke-width="3"/><path d="M190 267H372" stroke="#b5cbd4" stroke-width="1.5"/><path d="M190 170H372M190 200H372M190 230H372" stroke="#d7e5ea" stroke-width="1"/>
+ <rect x="405" y="110" width="224" height="179" rx="6" fill="#fbfdfe"/><text x="419" y="132" font-family="Arial,sans-serif" font-size="12" fill="#31586b" font-weight="700">ФИНАНСОВЫЙ РЕЗУЛЬТАТ</text>
+ <circle cx="466" cy="193" r="30" fill="none" stroke="#1a92a6" stroke-width="13"/><path d="M466 163A30 30 0 0 1 492 208" fill="none" stroke="#e4b33e" stroke-width="13"/><text x="510" y="193" font-family="Arial,sans-serif" font-size="16" fill="#244d63" font-weight="700">76%</text>
+ <g font-family="Arial,sans-serif" font-size="11" fill="#355b6e"><text x="419" y="246">Доходы и расходы</text><text x="419" y="265">Расчёты с контрагентами</text><text x="419" y="282">Регламентированные отчёты</text></g>
+ <path d="M-13 319H677L647 342H18Z" fill="#b2c5cf" stroke="#edf3f6" stroke-width="2"/><path d="M268 323H408L393 334H283Z" fill="#829ba9"/>
+</g>
+<g transform="translate(110 817)"><rect width="530" height="70" rx="17" fill="#102e42" stroke="#cea452" stroke-width="2"/><circle cx="45" cy="35" r="22" fill="none" stroke="#ffda79" stroke-width="2.5"/><path d="M30 35H57M49 27L57 35L49 43" fill="none" stroke="#ffda79" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M84 15V55" stroke="#cda14f" stroke-width="2"/><text x="108" y="43" font-family="Arial,sans-serif" font-size="25" fill="#f4f8fb" font-weight="700">ЭЛЕКТРОННАЯ ПОСТАВКА</text></g>
+<text x="375" y="930" font-family="Arial,sans-serif" font-size="14" fill="#a7c0cd" text-anchor="middle">БУХГАЛТЕРИЯ • ОПЕРАЦИИ • ОТЧЁТНОСТЬ</text>
+</svg>
