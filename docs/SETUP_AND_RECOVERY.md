@@ -219,3 +219,37 @@ search_methods
 [ ] 293 blocker status known
 [ ] no secrets exposed
 ```
+
+
+## 13. GitHub Deploy Key сервера ozon-mcp — read-only
+
+Назначение: дать отдельному системному пользователю `ozon-desktop` на VPS `ozon-mcp` возможность читать репозиторий `kvantexpert/mcp-ozon` по SSH (например, `git ls-remote`, `clone` и `fetch/pull`) без персонального GitHub token. Этот ключ не предназначен для записи в GitHub и не даёт доступ к другим репозиториям.
+
+### Единое название и расположение
+
+- **GitHub Deploy Key title:** `ozon-mcp — kvantexpert/mcp-ozon — read-only`
+- **Файл приватного ключа на VPS:** `/home/ozon-desktop/.ssh/github-mcp-ozon-readonly`
+- **Файл публичного ключа:** `/home/ozon-desktop/.ssh/github-mcp-ozon-readonly.pub`
+- **Комментарий ключа:** `github-mcp-ozon-readonly@ozon-mcp`
+- **Алгоритм:** Ed25519
+- **Fingerprint:** `SHA256:hDympwkG/dda3OuIspC95922NmhNQkQQEPwOWGrcPwA`
+- **Дата генерации:** 2026-10-10
+
+Имя состоит из роли/сервера, репозитория и уровня доступа. Такое имя использовать в GitHub, в имени файлов и в документации, чтобы позднее однозначно определить назначение ключа.
+
+### Регистрация в GitHub
+
+1. Открыть репозиторий https://github.com/kvantexpert/mcp-ozon/settings/keys.
+2. Нажать **Add deploy key**.
+3. В поле **Title** указать точно: `ozon-mcp — kvantexpert/mcp-ozon — read-only`.
+4. В поле **Key** вставить публичный ключ из файла `/home/ozon-desktop/.ssh/github-mcp-ozon-readonly.pub`.
+5. Оставить **Allow write access** выключенным. Нужен только READ-доступ.
+6. После сохранения проверить SSH-доступ командой `git ls-remote` к `git@github.com:kvantexpert/mcp-ozon.git` от пользователя `ozon-desktop`.
+
+### Безопасность и текущий статус
+
+- Приватный ключ остаётся на VPS в `/home/ozon-desktop/.ssh/` с правами доступа только владельцу; его запрещено отправлять в чат, добавлять в репозиторий или копировать в документацию.
+- В GitHub добавляется только публичный ключ (.pub).
+- Deploy Key привязан только к одному репозиторию. Для другого репозитория создаётся отдельный ключ.
+- **Статус на 2026-10-10:** ключ сгенерирован; требуется ручное добавление в GitHub Deploy keys. Пока успешная SSH-аутентификация к `kvantexpert/mcp-ozon` не подтверждена. До проверки не заявлять, что доступ готов.
+- Создание ключа и подготовка документации не требуют рестарта `ozon-mcp.service` или `ozon-performance.service`; сервисы не перезапускать ради настройки Deploy Key.
